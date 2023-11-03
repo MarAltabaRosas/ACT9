@@ -25,6 +25,9 @@ const getPostById = async (req, res) => {
     } 
 }
 
+
+// GET /api/posts/autor/IDAUTOR  (Recupera todos los posts de un autor en concreto)
+
 const getPostsByAuthorId = async (req, res) => {
     try{
         const {autorId} = req.params;
@@ -35,21 +38,6 @@ const getPostsByAuthorId = async (req, res) => {
        res.json({fatal: error.message});
     } 
 }
-// GET /api/posts/IDAUTOR  (Recupera todos los posts de un autor en concreto)
-
-/* const getPostsByAuthorId = async (req, res) => {
-    try{
-        const [autores] = await AutoresModel.selectAllAutores();
-        
-        for (let autor of autores){
-            const [post] = await PostsModel.selectPostsByAuthorId(autor.id);
-            autor.post = post;
-        }
-        res.json(post);
-    } catch (error){
-       res.json({fatal: error.message});
-    } 
-} */
 
 // POST /api/posts  (Recibe body de petición los datos de un nuevo post para insertarlo en la BD)
 
