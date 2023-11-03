@@ -18,7 +18,6 @@ const getPostById = async (req, res) => {
     try{
         const {postId} = req.params;
         const [post] = await PostsModel.selectPostById(postId);
-        console.log(post[0].autores_id)
         const [autor] = await AutoresModel.selectAutorById(post[0].autores_id);
         
         post[0].autor = autor;
