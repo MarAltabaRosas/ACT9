@@ -18,7 +18,11 @@ const getPostById = async (req, res) => {
     try{
         const {postId} = req.params;
         const [post] = await PostsModel.selectPostById(postId);
-        res.json(post[0]);
+        console.log(post[0].autores_id)
+        const [autor] = await AutoresModel.selectAutorById(post[0].autores_id);
+        
+        post[0].autor = autor;
+        res.json(post);
 
     } catch (error){
        res.json({fatal: error.message});
